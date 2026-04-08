@@ -1,0 +1,125 @@
+/* ============================================
+   ANIMATIONS.CSS — Transitions & Effects
+   ============================================ */
+
+/* ---------- Reveal on Scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.reveal-right {
+  transform: translateX(36px);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Stagger children inside a revealed container */
+.reveal.visible > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal.visible > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal.visible > *:nth-child(3) { transition-delay: 0.19s; }
+.reveal.visible > *:nth-child(4) { transition-delay: 0.26s; }
+
+/* ---------- Blob Morph (Avatar) ---------- */
+@keyframes blobMorph {
+  0%, 100% { border-radius: 60% 40% 55% 45% / 50% 45% 55% 50%; }
+  25%       { border-radius: 45% 55% 40% 60% / 55% 50% 45% 50%; }
+  50%       { border-radius: 50% 50% 60% 40% / 40% 60% 45% 55%; }
+  75%       { border-radius: 55% 45% 45% 55% / 50% 40% 60% 50%; }
+}
+
+/* ---------- Float (Badges) ---------- */
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ---------- Scroll Bounce Indicator ---------- */
+@keyframes scrollBounce {
+  0%, 100% { transform: rotate(45deg) translateY(0);  }
+  50%       { transform: rotate(45deg) translateY(6px); }
+}
+
+/* ---------- Hamburger to X ---------- */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Navbar entrance ---------- */
+@keyframes navSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+.navbar {
+  animation: navSlideDown 0.5s ease forwards;
+}
+
+/* ---------- Hero text entrance ---------- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-greeting { animation: fadeUp 0.6s ease 0.2s both; }
+.hero-name     { animation: fadeUp 0.6s ease 0.35s both; }
+.hero-role     { animation: fadeUp 0.6s ease 0.5s both; }
+.hero-desc     { animation: fadeUp 0.6s ease 0.65s both; }
+.hero-cta      { animation: fadeUp 0.6s ease 0.8s both; }
+.hero-visual   { animation: fadeUp 0.7s ease 0.5s both; }
+
+/* ---------- Pill hover pulse ---------- */
+.pill:hover {
+  animation: pillPop 0.2s ease;
+}
+
+@keyframes pillPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* ---------- Form submit feedback ---------- */
+@keyframes formSuccess {
+  0%   { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+.form-note.show {
+  animation: formSuccess 0.3s ease forwards;
+}
+
+/* ---------- Smooth active nav underline ---------- */
+.nav-links a::after {
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Card hover lift (global) ---------- */
+.stat-card,
+.skill-category,
+.project-card,
+.highlight-item,
+.contact-item {
+  will-change: transform;
+}
+
+/* ---------- Page load body fade ---------- */
+@keyframes bodyFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+body {
+  animation: bodyFade 0.4s ease forwards;
+}
